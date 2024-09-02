@@ -27,7 +27,7 @@ jobs:
           rm -rf dist/*
 
       - name: Minify JS
-        run: terser src/simplifier.js -o dist/simplifier.min.js
+        run: terser src/simplifier.js -o dist/simplifier.min.js --banner "/*!\n * © 2024 Aliaksandr Ivanou MyelophOne \n */\n"
 
       - name: Commit and Push
         run: |
