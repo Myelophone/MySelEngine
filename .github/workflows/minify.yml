@@ -27,7 +27,7 @@ jobs:
           rm -rf dist/*
 
       - name: Minify JS
-        run: terser src/simplifier.js -o dist/simplifier.min.js --banner "/*!\n * © 2024 Aliaksandr Ivanou MyelophOne \n */\n"
+        run: terser src/simplifier.js -o dist/simplifier.min.js
 
       - name: Ensure dist changes are recognized
         run: |
