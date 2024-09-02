@@ -21,6 +21,11 @@ jobs:
       - name: Install Terser
         run: npm install terser -g
 
+      - name: Create or clear dist directory
+        run: |
+          mkdir -p dist
+          rm -rf dist/*
+
       - name: Minify JS
         run: terser src/simplifier.js -o dist/simplifier.min.js
 
