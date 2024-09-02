@@ -29,12 +29,18 @@ jobs:
       - name: Minify JS
         run: terser src/simplifier.js -o dist/simplifier.min.js --banner "/*!\n * © 2024 Aliaksandr Ivanou MyelophOne \n */\n"
 
-      - name: Commit and Push
+      - name: Ensure dist changes are recognized
+        run: |
+          git rm -r --cached dist || true
+          git add -f dist
+          git diff --staged --quiet || echo "Changes detected in dist"
+
+      - name: Commit and push changes
         run: |
           git config --local user.name "GitHub Actions"
           git config --local user.email "actions@github.com"
           git add -f dist/simplifier.min.js
-          git commit -m "Minify dist js file"
-          git push origin main
+          git commit -m "Minify dist js file" || echo "No changes to commit"
+          git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
