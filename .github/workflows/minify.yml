@@ -1,35 +1,35 @@
 name: Minify JavaScript
 
 on:
-    push:
-        branches:
-            - main
+  push:
+    branches:
+      - main
 
 jobs:
-    build:
-        runs-on: ubuntu-latest
+  build:
+    runs-on: ubuntu-latest
 
-        steps:
-            - name: Checkout code
-              uses: actions/checkout@v2
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-            - name: Setup Node.js
-              uses: actions/setup-node@v3
-              with:
-                  node-version: "20"
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
 
-            - name: Install Terser
-              run: npm install terser -g
+      - name: Install Terser
+        run: npm install terser -g
 
-            - name: Minify JS
-              run: terser src/minifier.js -o dist/minifier.min.js
+      - name: Minify JS
+        run: terser src/minifier.js -o dist/minifier.min.js
 
-            - name: Commit and Push
-              run: |
-                  git config --local user.name "GitHub Actions"
-                  git config --local user.email "actions@github.com"
-                  git add dist/minifier.min.js
-                  git commit -m "Minify JavaScript"
-                  git push origin main
-              env:
-                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Commit and Push
+        run: |
+          git config --local user.name "GitHub Actions"
+          git config --local user.email "actions@github.com"
+          git add dist/minifier.min.js
+          git commit -m "Minify dist js file"
+          git push origin main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
