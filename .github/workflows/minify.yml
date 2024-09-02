@@ -33,7 +33,7 @@ jobs:
         run: |
           git config --local user.name "GitHub Actions"
           git config --local user.email "actions@github.com"
-          git add dist/simplifier.min.js
+          git add -f dist/simplifier.min.js
           git commit -m "Minify dist js file"
           git push origin main
         env:
