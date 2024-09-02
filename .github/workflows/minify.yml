@@ -22,13 +22,13 @@ jobs:
         run: npm install terser -g
 
       - name: Minify JS
-        run: terser src/minifier.js -o dist/minifier.min.js
+        run: terser src/simplifier.js -o dist/simplifier.min.js
 
       - name: Commit and Push
         run: |
           git config --local user.name "GitHub Actions"
           git config --local user.email "actions@github.com"
-          git add dist/minifier.min.js
+          git add dist/simplifier.min.js
           git commit -m "Minify dist js file"
           git push origin main
         env:
