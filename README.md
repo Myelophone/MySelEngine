@@ -7,6 +7,7 @@ This is a lightweight jQuery-like library created using vanilla JavaScript to si
 - DOM Manipulation (addClass, removeClass, toggleClass, etc.)
 - Event Handling (on)
 - AJAX Requests (GET, POST, and custom requests)
+- Includes dynamic loading of the script and fire it only after DOM is loaded
 
 ## Usage
 
